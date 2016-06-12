@@ -33,29 +33,39 @@ require_once './config.php';
                     <div class="col-md-6">
                         <h1>Simple Redirector</h1>
                         <h2>Statistics</h2>
-                        <table class="table">
-                            <thead style="font-weight: bold;">
-                                <tr>
-                                    <td>Link</td>
-                                    <td>Clicks</td>
-                                    <td>Last Clicked</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $stats = json_decode(file_get_contents('log.json'));
-                                foreach ($stats as $key => $data) {
-                                    ?>
+                        <?php
+                        if (file_exists('log.json')) {
+                            ?>
+                            <table class="table">
+                                <thead style="font-weight: bold;">
                                     <tr>
-                                        <td><?php echo $key; ?></td>
-                                        <td><?php echo $data->clicks; ?></td>
-                                        <td><?php echo date('d.m.Y H:i', $data->lastClicked); ?></td>
+                                        <td>Link</td>
+                                        <td>Clicks</td>
+                                        <td>Last Clicked</td>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     <?php
-                                }
-                                ?>
-                            </tbody>
-                        </table>
+                                    $stats = json_decode(file_get_contents('log.json'));
+                                    foreach ($stats as $key => $data) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $key; ?></td>
+                                            <td><?php echo $data->clicks; ?></td>
+                                            <td><?php echo date('d.m.Y H:i', $data->lastClicked); ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                            <?php
+                        } else {
+                            ?>
+                            <span style="color: #E60000; font-weight: bold;">There are no stats available, because nobody clicked your links.</span>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <hr />
