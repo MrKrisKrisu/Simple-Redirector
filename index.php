@@ -9,13 +9,11 @@ if (!isset($links[$request]))
 
 $stats = json_decode(file_get_contents('log.json'));
 
-if (isset($stats->$request)) {
+if (isset($stats->$request))
     $stats->$request->clicks++;
-    $stats->$request->lastClicked = time();
-} else {
+else
     $stats->$request->clicks = 1;
-    $stats->$request->lastClicked = time();
-}
+$stats->$request->lastClicked = time();
 
 $handle = fopen('log.json', 'w+');
 fwrite($handle, json_encode($stats));
