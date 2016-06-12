@@ -16,9 +16,13 @@ require_once './config.php';
                 ?>
                 <div class="row" style="margin-top: 30px;">
                     <div class="col-md-5">
+                        <h2>Login</h2>
                         <form method="POST">
-                            <label>Password</label>
-                            <input type="password" name="pw" class="form-control" />
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="pw" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
                         </form>
                     </div>
                 </div>
