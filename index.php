@@ -4,6 +4,12 @@ require_once './config.php';
 
 $request = key($_GET);
 
+if ($request == '') {
+    $data = explode('/', $_SERVER['REQUEST_URI']);
+    $data = array_reverse($data);
+    $request = $data[0] == '' ? $data[1] : $data[0];
+}
+
 if (!isset($links[$request]))
     die('Seite nicht gefunden.');
 
