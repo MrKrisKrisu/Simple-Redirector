@@ -10,8 +10,10 @@ if ($request == '') {
     $request = $data[0] == '' ? $data[1] : $data[0];
 }
 
-if (!isset($links[$request]))
-    die('Seite nicht gefunden.');
+if (!isset($links[$request])) {
+    header('Location: ' . $redirectUri);
+    die();
+}
 
 $stats = json_decode(file_get_contents('log.json'));
 
