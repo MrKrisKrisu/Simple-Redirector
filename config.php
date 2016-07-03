@@ -8,4 +8,4 @@ $links = array(
 $statsPw = 'goodPassword';
 
 // Redirect to this URL when Redirect ID is not set
-$redirectUri = 'https://www.google.de/#q=Weiterleitung+nicht+gefunden';
+$redirectUri = 'https://www.google.de/#q=Error+while+redirecting';
