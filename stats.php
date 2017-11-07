@@ -12,7 +12,7 @@ require_once './config.php';
     <body>
         <div class="container">
             <?php
-            if (!isset($_POST['pw']) || $_POST['pw'] != $statsPw) {
+            if (!isset($_POST['pw']) || $_POST['pw'] != $statsPw || md5($_POST['pw']) != $statsPw) {
                 ?>
                 <div class="row" style="margin-top: 30px;">
                     <div class="col-md-5">
